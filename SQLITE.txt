@@ -1,0 +1,225 @@
+XML FILE:-
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="400dp"
+android:layout_height="720dp"
+android:layout_gravity="center"
+android:orientation="vertical"
+android:background="@color/black"
+tools:context=".MainActivity">
+
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_gravity="center"
+android:layout_marginTop="50dp"
+android:layout_marginBottom="20dp"
+android:text="WELCOME"
+android:textColor="#DFC881"
+android:textSize="35dp"
+android:textStyle="bold" />
+<EditText
+android:id="@+id/uname"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:ems="10"
+
+android:textColor="#FFFFFFFF"
+android:inputType="textPersonName"
+android:text=" Name:" />
+<EditText
+android:id="@+id/upass"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:ems="10"
+android:inputType="textPersonName"
+android:textColor="@color/white"
+android:tint=" Password:"
+android:layout_marginTop="20dp"
+android:layout_marginBottom="20dp"/>
+<Button
+android:id="@+id/login"
+android:layout_width="350dp"
+android:layout_height="wrap_content"
+android:layout_gravity="center"
+android:text="login"
+android:textColor="@color/black"
+app:backgroundTint="#C19D33"/>
+<Button
+android:id="@+id/register"
+android:layout_width="350dp"
+android:layout_height="wrap_content"
+android:layout_gravity="center"
+android:text="register"
+android:textColor="@color/black"
+app:backgroundTint="#C19D33" />
+<Button
+android:id="@+id/delete"
+android:layout_width="350dp"
+android:layout_height="wrap_content"
+android:layout_gravity="center"
+android:text="delete"
+
+android:textColor="@color/black"
+app:backgroundTint="#C19D33"/>
+<Button
+android:id="@+id/update"
+android:layout_width="350dp"
+android:layout_height="wrap_content"
+android:layout_gravity="center"
+android:text="update"
+android:textColor="@color/black"
+app:backgroundTint="#C19D33"/>
+<Button
+android:id="@+id/display"
+android:layout_width="350dp"
+android:layout_height="wrap_content"
+android:layout_gravity="center"
+android:text="display"
+android:textColor="@color/black"
+app:backgroundTint="#C19D33"/>
+<TextView
+android:id="@+id/res"
+android:layout_width="400dp"
+android:layout_height="wrap_content"
+android:text="TextView"
+android:textColor="@color/white"
+android:layout_marginTop="20dp"
+android:layout_marginBottom="20dp"/>
+</LinearLayout>
+
+MAINACTIVITY:-
+package com.example.sqlite;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+public class MainActivity extends AppCompatActivity {
+Button register,update,delete,display, login;
+EditText uname, upass;
+TextView res;
+private static final String dbName="studentdb"; // Database Name
+private static final String tbName="student" ; // Table Name
+private static final int dbVersion = 1 ;
+Helper myDbHelper ;
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+setContentView(R.layout.activity_main);
+register=findViewById(R.id.register);
+update = findViewById(R.id.update);
+delete = findViewById(R.id.delete) ;
+display = findViewById(R.id.display) ;
+login = findViewById(R.id.login) ;
+res = findViewById(R.id.res) ;
+uname = findViewById(R.id.uname) ;
+upass = findViewById(R.id.upass) ;
+register.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View view) {
+myDbHelper = new Helper(MainActivity.this,dbName, null, dbVersion);
+long val = myDbHelper.adduser(uname.getText().toString(),
+upass.getText().toString());
+if(val == -1){
+Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
+}else{
+
+Toast.makeText(MainActivity.this, "inserted", Toast.LENGTH_SHORT).show();
+}
+}
+});
+update.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View view) {
+myDbHelper = new Helper(MainActivity.this,dbName, null, dbVersion);
+myDbHelper.update(uname.getText().toString(),upass.getText().toString());
+}
+});
+delete.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View view) {
+myDbHelper = new Helper(MainActivity.this,dbName, null, dbVersion);
+myDbHelper.delete(uname.getText().toString());
+}
+});
+display.setOnClickListener(new View.OnClickListener() {
+@Override
+public void onClick(View view) {
+myDbHelper = new Helper(MainActivity.this,dbName, null, dbVersion);
+String value = myDbHelper.display(MainActivity.this);
+res.setText(value);
+}
+});
+}
+}
+
+Helper class:-
+import android.database.sqlite.SQLiteOpenHelper;
+import and
+package com.example.sqlite;
+import android.content.ContentValues;
+import android.content.Context;
+
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+roidx.annotation.Nullable;
+
+public class Helper extends SQLiteOpenHelper {
+private static final String dbName = "studentdb"; // Database Name
+private static final String tbName = "student"; // Table Name
+private static final int dbVersion = 1;
+public Helper(@Nullable Context context, @Nullable String name, @Nullable
+SQLiteDatabase.CursorFactory factory, int version) {
+super(context, dbName, factory, dbVersion);
+}
+@Override
+public void onCreate(SQLiteDatabase db) {
+db.execSQL("CREATE TABLE " + tbName + "(uname VARCHAR(10),passw
+VARCHAR(10))" + ";");
+}
+@Override
+public void onUpgrade(SQLiteDatabase db, int prev_v, int new_v) {
+db.execSQL("DROP TABLE IF EXISTS " + tbName);
+onCreate(db);
+}
+public long adduser(String name, String pass) {
+SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+ContentValues cv = new ContentValues();
+cv.put("uname", name);
+cv.put("passw ", pass);
+long result = sqLiteDatabase.insert(tbName, null, cv);
+sqLiteDatabase.close();
+return result;
+}
+public void delete(String name) {
+
+SQLiteDatabase sqLiteDatabase = this.getWritableDatabase(); // 7(a)
+sqLiteDatabase.execSQL("DELETE FROM " + tbName + " WHERE uname='" + name +
+"';");
+// 7(b)
+// SQL statement : DELETE FROM tbName WHERE uname='name';
+sqLiteDatabase.close(); // 7(c)
+}
+public void update(String name, String pass) {
+SQLiteDatabase sqLiteDatabase = this.getWritableDatabase(); //6(a)
+sqLiteDatabase.execSQL("UPDATE " + tbName + " SET passw='" + pass + "'" + " WHERE
+uname='" + name + "';");
+sqLiteDatabase.close();
+}
+public String display(Context ctx) {
+SQLiteDatabase sqLiteDatabase = this.getReadableDatabase();
+Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM " + tbName, null);
+String finalres = " ";
+while (cursor.moveToNext()) {
+finalres += cursor.getString(0) + ":" + cursor.getString(1);
+}
+return finalres;
+}
+}

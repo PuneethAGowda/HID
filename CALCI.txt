@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="#201D1D"
+android:orientation="vertical"
+tools:context=".MainActivity">
+<TextView
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginTop="15dp"
+android:layout_marginBottom="15dp"
+android:gravity="center"
+android:text="CALCULATOR"
+android:textColor="#C1BA7F"
+android:textSize="48dp" />
+<EditText
+android:id="@+id/text"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_margin="40dp"
+android:layout_marginBottom="20dp"
+android:background="#EDEDE5"
+android:gravity="right"
+android:hint="0"
+android:textSize="40dp" />
+
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginLeft="20dp"
+android:layout_marginRight="20dp"
+android:layout_marginBottom="10dp"
+android:orientation="horizontal">
+<Button
+android:id="@+id/nine"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_weight="0.25"
+android:backgroundTint="@color/black"
+android:text="9"
+android:textSize="45dp"
+/>
+<Button
+android:id="@+id/eight"
+android:backgroundTint="@color/black"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_weight="0.25"
+android:text="8"
+android:textSize="45dp"
+/>
+<Button
+android:id="@+id/seven"
+android:backgroundTint="@color/black"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_weight="0.25"
+android:text="7"
+android:textSize="45dp"
+/>
+<Button
+android:id="@+id/plus"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+
+android:layout_weight="0.25"
+android:text="+"
+android:textColor="@color/black"
+android:backgroundTint="#F1CF6B"
+android:textSize="45dp"
+/>
+</LinearLayout>
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginLeft="20dp"
+android:layout_marginRight="20dp"
+android:layout_marginBottom="10dp"
+android:orientation="horizontal">
+<Button
+android:id="@+id/six"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_weight="0.25"
+android:backgroundTint="@color/black"
+android:text="6"
+android:textSize="45dp"
+/>
+<Button
+android:id="@+id/five"
+android:backgroundTint="@color/black"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_weight="0.25"
+android:text="5"
+android:textSize="45dp"
+/>
+<Button
+android:id="@+id/four"
+android:backgroundTint="@color/black"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_weight="0.25"
+android:text="4"
+
+android:textSize="45dp"
+/>
+<Button
+android:id="@+id/minus"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_weight="0.25"
+android:text="-"
+android:textColor="@color/black"
+android:backgroundTint="#F1CF6B"
+android:textSize="45dp"
+/>
+
+</LinearLayout>
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginLeft="20dp"
+android:layout_marginRight="20dp"
+android:layout_marginBottom="10dp"
+android:orientation="horizontal">
+<Button
+android:id="@+id/three"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_weight="0.25"
+android:backgroundTint="@color/black"
+android:text="3"
+android:textSize="45dp"
+/>
+<Button
+android:id="@+id/two"
+android:backgroundTint="@color/black"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_weight="0.25"
+android:text="2"
+
+android:textSize="45dp"
+/>
+<Button
+android:id="@+id/one"
+android:backgroundTint="@color/black"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_weight="0.25"
+android:text="1"
+android:textSize="45dp"
+/>
+<Button
+android:id="@+id/mult"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_weight="0.25"
+android:text="*"
+android:textColor="@color/black"
+android:backgroundTint="#F1CF6B"
+android:textSize="45dp"
+/>
+
+</LinearLayout>
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginLeft="20dp"
+android:layout_marginRight="20dp"
+android:layout_marginBottom="10dp"
+android:orientation="horizontal">
+
+<Button
+android:id="@+id/zero"
+android:backgroundTint="@color/black"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_weight="0.25"
+android:text="0"
+
+android:textSize="45dp"
+/>
+<Button
+android:id="@+id/point"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_weight="0.25"
+android:textColor="@color/black"
+android:backgroundTint="#F1CF6B"
+android:text="."
+android:textSize="45dp"
+android:gravity="center"
+/>
+<Button
+android:id="@+id/ptg"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_weight="0.25"
+android:textColor="@color/black"
+android:backgroundTint="#F1CF6B"
+android:text="%"
+android:textSize="45dp"
+/>
+<Button
+android:id="@+id/div"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_weight="0.25"
+android:text="/"
+android:textColor="@color/black"
+android:backgroundTint="#F1CF6B"
+android:textSize="45dp"
+/>
+
+</LinearLayout>
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+
+android:layout_marginLeft="20dp"
+android:layout_marginRight="20dp"
+android:layout_marginBottom="10dp"
+android:orientation="horizontal">
+<Button
+android:id="@+id/clear"
+android:layout_width="match_parent"
+android:layout_height="100dp"
+android:layout_weight="0.5"
+android:backgroundTint="#000000"
+android:text="CLEAR"
+android:textSize="40dp" />
+<Button
+android:id="@+id/equals"
+android:layout_width="match_parent"
+android:layout_height="100dp"
+android:layout_weight="0.5"
+android:backgroundTint="#000000"
+android:text="="
+android:textSize="40dp" />
+</LinearLayout>
+</LinearLayout>
+
+
+
+
+
+MAINACTIVITY.JAVA:
+
+
+package com.example.vinlabcalc;
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+EditText res;
+Button nine, eight, seven, six, five, four, three, two, one, plus, minus, mult, div, ptg, clear, equals;
+String op ="";
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+
+super.onCreate(savedInstanceState);
+setContentView(R.layout.activity_main);
+equals=findViewById(R.id.equals);
+res = findViewById(R.id.text);
+nine = findViewById(R.id.nine);
+eight = findViewById(R.id.eight);
+seven = findViewById(R.id.seven);
+six = findViewById(R.id.six);
+five = findViewById(R.id.five);
+four = findViewById(R.id.four);
+three = findViewById(R.id.three);
+two = findViewById(R.id.two);
+one = findViewById(R.id.one);
+plus = findViewById(R.id.plus);
+minus = findViewById(R.id.minus);
+mult = findViewById(R.id.mult);
+div = findViewById(R.id.div);
+ptg = findViewById(R.id.ptg);
+clear = findViewById(R.id.clear);
+
+one.setOnClickListener(this);
+two.setOnClickListener(this);
+three.setOnClickListener(this);
+four.setOnClickListener(this);
+five.setOnClickListener(this);
+six.setOnClickListener(this);
+seven.setOnClickListener(this);
+eight.setOnClickListener(this);
+nine.setOnClickListener(this);
+plus.setOnClickListener(this);
+minus.setOnClickListener(this);
+mult.setOnClickListener(this);
+div.setOnClickListener(this);
+ptg.setOnClickListener(this);
+clear.setOnClickListener(this);
+equals.setOnClickListener(this);
+}
+@Override
+public void onClick(View view) {
+double fr = 0.0;
+switch (view.getId()) {
+case R.id.one:
+res.append("1");
+break;
+case R.id.two:
+res.append("2");
+
+break;
+case R.id.three:
+res.append("3");
+break;
+case R.id.four:
+res.append("4");
+break;
+case R.id.five:
+res.append("5");
+break;
+case R.id.six:
+res.append("6");
+break;
+case R.id.seven:
+res.append("7");
+break;
+case R.id.eight:
+res.append("8");
+break;
+case R.id.nine:
+res.append("9");
+break;
+case R.id.plus:
+res.append("+");
+op = "+";
+break;
+case R.id.minus:
+res.append("-");
+op = "-";
+break;
+case R.id.mult:
+res.append("*");
+op = "*";
+break;
+case R.id.div:
+res.append("/");
+op = "/";
+Break;
+case R.id.clear:
+res.setText("");
+break;
+case R.id.equals: fr =
+evalvExp(res.getText().toString(), op);
+res.setText(String.valueOf(fr));
+break;
+}
+}
+private double evalvExp(String res, String op) {
+
+String[] tokens = res.split("\\+|-|\\*|\\/");
+double fop = Double.parseDouble(tokens[0]);
+double sop = Double.parseDouble(tokens[1]);
+switch (op) {
+case "+":
+return fop + sop;
+case "-":
+return fop - sop;
+case "*":
+return fop * sop;
+case "/":
+return fop / sop;
+}
+return 0.0;
+}
+}

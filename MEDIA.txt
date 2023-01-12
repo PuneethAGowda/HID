@@ -1,0 +1,145 @@
+MAIN.JAVA
+package com.example.myapplication;
+import androidx.appcompat.app.AppCompatActivity;
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+public class MainActivity extends AppCompatActivity {
+    Button play,pause,forward,rewind,stop,restart;
+    MediaPlayer media;
+    int Starttime=0;
+    int stopttime=0;
+
+    int forwardtime=5000;
+    int rewindtime=5000;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "Playing media now",
+                        Toast.LENGTH_SHORT).show();
+                media=MediaPlayer.create(MainActivity.this, R.raw.first);
+                media.start();;
+            }
+        });
+        pause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, "media stopped",
+                        Toast.LENGTH_SHORT).show();
+                media.pause();
+            }
+        });
+        restart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                media.seekTo(Starttime);
+                media.start();
+            }
+        });
+        forward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                int currentpos=media.getCurrentPosition();
+                if((currentpos+forwardtime)<=(stopttime=media.getDuration()))
+                {
+                    media.seekTo(currentpos+forwardtime);
+                }
+            }
+        });
+
+    }
+}
+
+
+
+XML:
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#101012"
+    tools:context=".MainActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#F1E3BB"
+        android:text="Media Player"
+        android:textSize="40dp"
+        android:gravity="center"
+        android:textStyle="italic"
+        />
+    <Button
+        android:id="@+id/play"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="125dp"
+
+        android:layout_marginRight="15dp"
+        android:backgroundTint="#BD9827"
+        android:text="Play"
+        android:textSize="20dp" />
+    <Button
+        android:id="@+id/pause"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:backgroundTint="#BD9827"
+        android:text="Pause"
+        android:textSize="20dp" />
+    <Button
+        android:id="@+id/forward"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:backgroundTint="#BD9827"
+        android:text="forward"
+        android:textSize="20dp" />
+    <Button
+        android:id="@+id/rewind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:backgroundTint="#BD9827"
+        android:text="rewind"
+        android:textSize="20dp" />
+    <Button
+        android:id="@+id/stop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:backgroundTint="#BD9827"
+        android:text="stop"
+        android:textSize="20dp" />
+    <Button
+        android:id="@+id/restart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:backgroundTint="#BD9827"
+        android:text="restart"
+        android:textSize="20dp" />
+
+</LinearLayout>
